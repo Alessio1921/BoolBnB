@@ -194,29 +194,31 @@
                     {{-- @dd($apartment->pictures) --}}
                     <input type="file" class="form-control" name="images[]" id="image[]" multiple>
                 </div>
-                <div class="col-10 mt-3">
-                    {{-- @foreach ($sponsorships as $sponsorship)
+                {{-- <div class="col-10 mt-3">
+                    @foreach ($sponsorships as $sponsorship)
                         <div class="col-3">
                             <label for="sponsorship">{{ $sponsorship->name }}</label>
                             <input type="radio" name="sponsorship" id="sponsorship" value="{{ $sponsorship->id }}">
                         </div>
-                    @endforeach --}}
-                    <div class="Send my-auto">
-                        <button class="btn btn-outline-primary btn-md" type="submit">send</button>
-                    </div>
-                
-                </div>
+                    @endforeach
+                </div> --}}
             </div>
         </form>
-        <div class="delete-button mt-2">
-            @if (Auth::user()->id == $apartment->user_id)
-                <form action="{{ route('apartment.destroy', $apartment->id) }}" method="POST" class="apartment-form-destroyer" onclick="return confirm('Sei sicuro di voler eliminare l\'appartamento {{$apartment->title}} ?' )">
-                    {{-- apartment-title="{{ $apartment->title }}" --}}
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-md ms-auto">Delete</a>
-                </form>
-            @endif
+        <div class="row justify-content-between">
+            <div class="col-2">
+                <div class="Send my-auto">
+                    <button class="btn btn-outline-primary btn-md" type="submit">send</button>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="delete-button mt-2">
+                    <form action="{{ route('apartment.destroy', $apartment->id) }}" method="POST" class="apartment-form-destroyer" onclick="return confirm('Sei sicuro di voler eliminare l\'appartamento {{$apartment->title}} ?' )">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline-danger btn-md">Delete</a>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

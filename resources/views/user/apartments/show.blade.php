@@ -18,7 +18,7 @@
         <div class="col-12 mb-3">
             <div class="row justify-content-center">
                 @foreach ($apartment->pictures as $photo)
-                    <div class="col-2 show-thumbnails">
+                    <div class="col-2 show-thumbnails mb-2">
                         @if (str_starts_with($apartment->image, 'https://') || str_starts_with($apartment->image, 'http://'))
                             <img class="rounded-1 w-100" src="{{$photo->image}}" alt="apartment img" >
                         @else
